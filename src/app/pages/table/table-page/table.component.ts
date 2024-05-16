@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LogInService } from '../../../share/log-in.service';
 import { Subscription } from 'rxjs';
 import { WarningComponent } from '../dialogs/warning/warning.component';
+import { EditProductComponent } from '../dialogs/edit-product/edit-product.component';
 
 @Component({
   selector: 'app-table',
@@ -79,5 +80,19 @@ export class TableComponent implements AfterViewInit {
           this.logInService.removeDataTableService(id);
         }
       });
+  }
+
+  openDialogEditProduct(row: ProductInterface) {
+    this.dialog.open(EditProductComponent, {
+      data: {
+        id: row.id,
+        nombre: row.nombre,
+        precio: row.precio,
+        peso: row.peso,
+        formato: row.formato,
+        marca: row.marca,
+        descripcion: row.descripcion,
+      },
+    });
   }
 }

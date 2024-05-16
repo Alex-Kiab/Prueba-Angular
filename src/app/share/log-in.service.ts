@@ -38,4 +38,16 @@ export class LogInService {
       })
     );
   }
+
+  editProductService(dialogFormValues: ProductInterface, id: number) {
+    this.products.next(
+      this.products.value.map((value) => {
+        if (value.id === id) {
+          return { ...value, ...dialogFormValues };
+        } else {
+          return value;
+        }
+      })
+    );
+  }
 }
