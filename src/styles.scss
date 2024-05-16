@@ -2,3 +2,17 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Colors */
+$primary-color: #009342;
+$basic-color: white;
+
+/* Buttons */
+@mixin flat-button {
+  background-color: $primary-color !important;
+  color: $basic-color !important;
+}
+
+@mixin stroked-button {
+  color: $primary-color !important;
+}
