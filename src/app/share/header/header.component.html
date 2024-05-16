@@ -1,8 +1,19 @@
 <mat-toolbar class="header">
   <span>Mercadona</span>
   <span class="header__spacer"></span>
-  <div>nombreUsuario</div>
-  <button class="header__button" mat-icon-button>
+  @if (loggedUserName) {
+  <div>{{ loggedUserName }}</div>
+  <button class="header__button--icon" mat-icon-button (click)="exit()">
     <mat-icon>logout</mat-icon>
-  </button></mat-toolbar
+  </button>
+  } @else {
+  <button
+    class="header__button--main"
+    mat-flat-button
+    color="primary"
+    (click)="navigateTo()"
+  >
+    Iniciar sesión
+  </button>
+  }</mat-toolbar
 >
