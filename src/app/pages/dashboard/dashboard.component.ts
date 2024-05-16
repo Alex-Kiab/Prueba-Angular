@@ -4,11 +4,12 @@ import { MatCardModule } from '@angular/material/card';
 import { ProductInterface } from '../../core/interfaces';
 import { PRODUCTO } from '../../core/data';
 import { Router } from '@angular/router';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule],
+  imports: [MatCardModule, MatButtonModule, MatIcon],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })

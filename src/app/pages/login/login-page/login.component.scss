@@ -1,9 +1,15 @@
+@import '../../../../styles.scss';
+
 .component {
   display: flex;
   justify-content: center;
   padding: 24px;
   &__card {
     width: 400px;
+    &__image {
+      width: 100%;
+      padding: 40px 0px 40px 0px;
+    }
     &__header {
       padding: 16px;
     }
@@ -15,10 +21,12 @@
     }
     &__button {
       &--secondary {
+        @include stroked-button;
         width: 100%;
         margin-right: 12px;
       }
       &--main {
+        @include flat-button;
         width: 100%;
       }
     }

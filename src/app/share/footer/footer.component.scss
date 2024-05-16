@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 .footer {
   justify-content: center;
   display: fixed;
@@ -8,5 +10,8 @@
   }
   &__spacer {
     flex: 1 1 auto;
+  }
+  &__button {
+    @include flat-button;
   }
 }

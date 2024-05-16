@@ -1,3 +1,5 @@
+@import '../../../../styles.scss';
+
 .dialog {
   &__content {
     &__input {
@@ -6,6 +8,14 @@
     &__actions {
       justify-content: right;
       padding: 0px;
+    }
+    &__button {
+      &--secondary {
+        @include stroked-button;
+      }
+      &--main {
+        @include flat-button;
+      }
     }
   }
 }
