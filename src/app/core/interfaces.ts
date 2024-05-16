@@ -4,6 +4,7 @@ export interface ProductInterface {
   precio: number;
   peso: number;
   formato: string;
+  marca: string;
   descripcion: string;
 }
 
