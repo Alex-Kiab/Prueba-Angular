@@ -1,1 +1,15 @@
-<p>dialog-error works!</p>
+<div class="dialog">
+  <h2 mat-dialog-title class="dialog__title">Error</h2>
+  <div class="dialog__content">
+    @if (logInPanelService.require === true){
+    <mat-dialog-content>Rellene los campos obligatorios</mat-dialog-content>}
+    @else {
+    <mat-dialog-content>Usuario o contraseña incorrectos</mat-dialog-content>
+    }
+  </div>
+  <mat-dialog-actions class="dialog__actions">
+    <button mat-flat-button mat-dialog-close class="dialog__button">
+      Cerrar
+    </button>
+  </mat-dialog-actions>
+</div>

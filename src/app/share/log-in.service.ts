@@ -8,9 +8,13 @@ export class LogInService {
   private userName = new BehaviorSubject<string | null>(null);
   userName$ = this.userName.asObservable();
 
-  constructor() {}
+  require: boolean = false;
 
   logInUserName(logInUsuario: string) {
     this.userName.next(logInUsuario);
+  }
+
+  logOut() {
+    this.userName.next(null);
   }
 }

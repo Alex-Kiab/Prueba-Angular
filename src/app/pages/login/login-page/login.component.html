@@ -33,7 +33,11 @@
           </button>
         </mat-form-field>
         <div class="component__card__actions">
-          <button class="component__card__button--secondary" mat-stroked-button>
+          <button
+            class="component__card__button--secondary"
+            mat-stroked-button
+            (click)="exit()"
+          >
             Cancelar
           </button>
           <button

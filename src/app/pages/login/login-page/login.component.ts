@@ -5,12 +5,13 @@ import { Router, RouterLink } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { UserInterface } from '../../../core/interfaces';
+import { USER } from '../../../core/data';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { LogInService } from '../../../share/log-in.service';
-import { USER } from '../../../core/data';
-import { UserInterface } from '../../../core/interfaces';
+import { DialogErrorComponent } from '../dialog-error/dialog-error.component';
 
 @Component({
   selector: 'app-login',
@@ -45,6 +46,10 @@ export class LoginComponent {
     contrasena: ['', Validators.required],
   });
 
+  openDialogError(): void {
+    this.dialog.open(DialogErrorComponent);
+  }
+
   submitButton(): void {
     const formsName = this.loginForm.controls.usuario.value;
     const formsPassword = this.loginForm.controls.contrasena.value;
@@ -53,9 +58,16 @@ export class LoginComponent {
         formsName === data.userName && formsPassword === data.userPassword
     );
     console.log(this.loginForm.value);
-    if (correctData === true) {
+
+    if (this.loginForm.invalid) {
+      this.openDialogError();
+      this.logInService.require = true;
+    } else if (correctData === true) {
       this.logInService.logInUserName(this.loginForm.value.usuario as string);
       this.router.navigate(['tabla']);
+    } else {
+      this.openDialogError();
+      this.logInService.require = false;
     }
   }
 
