@@ -1,6 +1,16 @@
+@import '../../../../../styles.scss';
+
 .dialog {
   &__actions {
     justify-content: right;
     padding: 24px;
+  }
+  &__button {
+    &--secondary {
+      @include stroked-button;
+    }
+    &--main {
+      @include flat-button;
+    }
   }
 }
