@@ -1,0 +1,22 @@
+<div class="component">
+  <mat-card class="component__card">
+    <mat-card-header class="component__card__header">
+      <mat-card-title>Tornillos</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="component__card__content">
+      <p>
+        <b>{{ productList.length }}</b> por revisar.
+      </p>
+    </mat-card-content>
+    <mat-card-actions class="component__card__actions">
+      <button
+        mat-flat-button
+        color="primary"
+        class="component__card__button"
+        (click)="navigateTo()"
+      >
+        Ver más
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

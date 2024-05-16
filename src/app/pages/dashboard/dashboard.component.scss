@@ -1,0 +1,12 @@
+.component {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  &__card {
+    width: 400px;
+    &__actions {
+      justify-content: right;
+      padding: 16px;
+    }
+  }
+}
