@@ -1,5 +1,9 @@
 <mat-toolbar class="header">
-  <span>Mercadona</span>
+  <img
+    class="header__logo"
+    src="../../../assets/images/Logo Mercadona IT.svg"
+    (click)="exit()"
+  />
   <span class="header__spacer"></span>
   @if (loggedUserName) {
   <div>{{ loggedUserName }}</div>
@@ -7,12 +11,7 @@
     <mat-icon>logout</mat-icon>
   </button>
   } @else {
-  <button
-    class="header__button--main"
-    mat-flat-button
-    color="primary"
-    (click)="navigateTo()"
-  >
+  <button class="header__button--main" mat-flat-button (click)="navigateTo()">
     Iniciar sesión
   </button>
   }</mat-toolbar
