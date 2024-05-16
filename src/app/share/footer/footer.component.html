@@ -2,4 +2,10 @@
   <span class="footer__text"
     >© Mercadona S.A. A46103834. Todos los derechos reservados.</span
   >
+  @if (loggedUserName){
+  <span class="footer__spacer"></span>
+  <button class="footer__button" mat-flat-button color="primary">
+    Añadir producto
+  </button>
+  }
 </mat-toolbar>
