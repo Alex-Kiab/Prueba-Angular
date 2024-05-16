@@ -1,57 +1,66 @@
 <div class="component">
-  <mat-card class="component__card">
-    <div>
-      <img
-        class="component__card__image"
-        src="../../../assets/images/Hola.svg"
-      />
-    </div>
-    <mat-card-content class="component__card__content">
-      <!-- Formulario -->
-      <form
-        class="card__form"
-        name="loginForm"
-        [formGroup]="loginForm"
-        (ngSubmit)="submitButton()"
-      >
-        <mat-form-field class="component__card__input">
-          <mat-label>Usuario</mat-label>
-          <input matInput formControlName="usuario" />
-        </mat-form-field>
-        <mat-form-field class="component__card__input">
-          <mat-label>Contraseña</mat-label>
-          <input
-            matInput
-            [type]="hide ? 'password' : 'text'"
-            formControlName="contrasena"
-          />
-          <button
-            mat-icon-button
-            matSuffix
-            (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide"
-          >
-            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-          </button>
-        </mat-form-field>
-        <div class="component__card__actions">
-          <button
-            class="component__card__button--secondary"
-            mat-stroked-button
-            (click)="exit()"
-          >
-            Cancelar
-          </button>
-          <button
-            class="component__card__button--main"
-            mat-flat-button
-            type="submit"
-          >
-            Login
-          </button>
-        </div>
-      </form>
-    </mat-card-content>
-  </mat-card>
+  @if(loading) {
+  <div class="component__loading">
+    <mat-spinner></mat-spinner>
+    <p>Cargando...</p>
+  </div>
+  } @else {
+  <div class="component__card">
+    <mat-card>
+      <div>
+        <img
+          class="component__card__image"
+          src="../../../assets/images/Hola.svg"
+        />
+      </div>
+      <mat-card-content class="component__card__content">
+        <!-- Formulario -->
+        <form
+          class="card__form"
+          name="loginForm"
+          [formGroup]="loginForm"
+          (ngSubmit)="submitButton(true)"
+        >
+          <mat-form-field class="component__card__input">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="usuario" />
+          </mat-form-field>
+          <mat-form-field class="component__card__input">
+            <mat-label>Contraseña</mat-label>
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              formControlName="contrasena"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+          <div class="component__card__actions">
+            <button
+              class="component__card__button--secondary"
+              mat-stroked-button
+              (click)="exit()"
+            >
+              Cancelar
+            </button>
+            <button
+              class="component__card__button--main"
+              mat-flat-button
+              type="submit"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  }
 </div>
