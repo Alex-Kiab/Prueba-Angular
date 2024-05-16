@@ -4,7 +4,12 @@
   >
   @if (loggedUserName){
   <span class="footer__spacer"></span>
-  <button class="footer__button" mat-flat-button color="primary">
+  <button
+    class="footer__button"
+    mat-flat-button
+    color="primary"
+    (click)="openDialogAddProduct()"
+  >
     Añadir producto
   </button>
   }

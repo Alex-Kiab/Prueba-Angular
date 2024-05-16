@@ -1,0 +1,11 @@
+.dialog {
+  &__content {
+    &__input {
+      width: 100%;
+    }
+    &__actions {
+      justify-content: right;
+      padding: 0px;
+    }
+  }
+}

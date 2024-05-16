@@ -10,6 +10,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
+import { LogInService } from '../../../share/log-in.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-table',
@@ -36,11 +38,22 @@ export class TableComponent implements AfterViewInit {
     'accion',
   ];
   dataSource = new MatTableDataSource<ProductInterface>(PRODUCTO);
+  private subscription!: Subscription;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(private logInService: LogInService, public dialog: MatDialog) {}
+
+  ngOnInit() {
+    this.subscription = this.logInService.products$.subscribe(
+      (allProducts) => (this.dataSource.data = allProducts)
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

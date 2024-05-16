@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { LogInService } from '../log-in.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
+import { AddProductComponent } from '../dialogs/add-product/add-product.component';
 
 @Component({
   selector: 'app-footer',
@@ -30,5 +31,9 @@ export class FooterComponent {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  openDialogAddProduct(): void {
+    this.dialog.open(AddProductComponent);
   }
 }
