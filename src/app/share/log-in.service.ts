@@ -26,4 +26,16 @@ export class LogInService {
   addProductService(dialogFormValues: ProductInterface): void {
     this.products.next([...this.products.value, dialogFormValues]);
   }
+
+  removeDataTableService(id: number) {
+    this.products.next(
+      [...this.products.value].filter((value, index, array) => {
+        if (value.id === id) {
+          return false;
+        } else {
+          return true;
+        }
+      })
+    );
+  }
 }

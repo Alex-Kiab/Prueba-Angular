@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { LogInService } from '../../../share/log-in.service';
 import { Subscription } from 'rxjs';
+import { WarningComponent } from '../dialogs/warning/warning.component';
 
 @Component({
   selector: 'app-table',
@@ -67,5 +68,16 @@ export class TableComponent implements AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  openDialogWarning(id: number, nombre: string): void {
+    this.dialog
+      .open(WarningComponent, { data: nombre })
+      .afterClosed()
+      .subscribe((value) => {
+        if (value === true) {
+          this.logInService.removeDataTableService(id);
+        }
+      });
   }
 }

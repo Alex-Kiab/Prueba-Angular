@@ -1,0 +1,25 @@
+<div class="dialog">
+  <h2 mat-dialog-title class="dialog__title">Confirmación</h2>
+  <div class="dialog__content">
+    <mat-dialog-content
+      >¿Esta seguro de que desea eliminar {{ printData }}?</mat-dialog-content
+    >
+  </div>
+  <mat-dialog-actions class="dialog__actions">
+    <button
+      mat-stroked-button
+      mat-dialog-close
+      class="dialog__button--secondary"
+    >
+      Cancelar
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      class="dialog__button--main"
+      (click)="closeDialog()"
+    >
+      Eliminar
+    </button>
+  </mat-dialog-actions>
+</div>
