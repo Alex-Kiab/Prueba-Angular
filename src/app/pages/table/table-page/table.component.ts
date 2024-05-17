@@ -14,6 +14,7 @@ import { LogInService } from '../../../share/log-in.service';
 import { Subscription } from 'rxjs';
 import { WarningComponent } from '../dialogs/warning/warning.component';
 import { EditProductComponent } from '../dialogs/edit-product/edit-product.component';
+import { SettingsComponent } from '../dialogs/settings/settings.component';
 
 @Component({
   selector: 'app-table',
@@ -47,7 +48,7 @@ export class TableComponent implements AfterViewInit {
 
   constructor(private logInService: LogInService, public dialog: MatDialog) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.subscription = this.logInService.products$.subscribe(
       (allProducts) => (this.dataSource.data = allProducts)
     );
@@ -57,7 +58,7 @@ export class TableComponent implements AfterViewInit {
     this.subscription.unsubscribe();
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -69,6 +70,10 @@ export class TableComponent implements AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  openDialogSettings(): void {
+    this.dialog.open(SettingsComponent);
   }
 
   openDialogWarning(id: number, nombre: string): void {

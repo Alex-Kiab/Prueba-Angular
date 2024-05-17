@@ -1,0 +1,30 @@
+<div class="dialog">
+  <h2 mat-dialog-title class="dialog__title">Opciones</h2>
+  <div class="dialog__content">
+    <mat-dialog-content>
+      <p>Coja y arrastre las columnas para cambiar su orden</p>
+      <div
+        cdkDropList
+        [cdkDropListData]="displayedColumns"
+        class="dialog__content__list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        @for (item of displayedColumns; track item) {
+        <div class="dialog__content__box" cdkDrag>{{ item }}</div>
+        }
+      </div>
+    </mat-dialog-content>
+  </div>
+  <mat-dialog-actions class="dialog__actions">
+    <button
+      mat-stroked-button
+      mat-dialog-close
+      class="dialog__button--secondary"
+    >
+      Cancelar
+    </button>
+    <button mat-flat-button mat-dialog-close class="dialog__button--main">
+      Guardar
+    </button>
+  </mat-dialog-actions>
+</div>

@@ -1,9 +1,18 @@
 <div class="component">
   <mat-card class="component__card">
-    <mat-form-field class="component__field">
-      <mat-label>Buscar</mat-label>
-      <input matInput (keyup)="applyFilter($event)" #input />
-    </mat-form-field>
+    <div class="component__options">
+      <mat-form-field class="component__options__field">
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input />
+      </mat-form-field>
+      <button
+        class="component__options__button"
+        mat-icon-button
+        (click)="openDialogSettings()"
+      >
+        <mat-icon>settings</mat-icon>
+      </button>
+    </div>
 
     <div class="component__table">
       <table mat-table [dataSource]="dataSource" matSort>

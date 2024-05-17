@@ -16,6 +16,11 @@
       display: flex;
       flex-direction: column;
     }
+    &__options {
+      &__field {
+        margin-right: 20px;
+      }
+    }
     &__table {
       height: 100%;
       flex-grow: 1;
