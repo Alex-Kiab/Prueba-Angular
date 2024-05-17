@@ -12,3 +12,7 @@ export interface UserInterface {
   userName: string;
   userPassword: string;
 }
+
+export interface ColumnInterface {
+  columnName: string;
+}

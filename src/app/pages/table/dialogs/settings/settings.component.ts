@@ -15,6 +15,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-settings',
@@ -33,6 +34,8 @@ import {
   styleUrl: './settings.component.scss',
 })
 export class SettingsComponent {
+  private subscription!: Subscription;
+
   displayedColumns: string[] = [
     'nombre',
     'precio',
@@ -41,22 +44,32 @@ export class SettingsComponent {
     'accion',
   ];
 
-  constructor(public logInPanelService: LogInService) {}
+  constructor(public logInService: LogInService) {}
+
+  ngOnInit(): void {
+    this.subscription = this.logInService.columns$.subscribe(
+      (columnOrderService) =>
+        (this.displayedColumns = columnOrderService.map(
+          (column) => column.columnName
+        ))
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
+    moveItemInArray(
+      this.displayedColumns,
+      event.previousIndex,
+      event.currentIndex
+    );
+  }
+
+  saveOrder() {
+    this.logInService.columnOrder(
+      this.displayedColumns.map((columnName) => ({ columnName }))
+    );
   }
 }

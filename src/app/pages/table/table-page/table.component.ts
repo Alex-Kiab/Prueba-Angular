@@ -52,6 +52,12 @@ export class TableComponent implements AfterViewInit {
     this.subscription = this.logInService.products$.subscribe(
       (allProducts) => (this.dataSource.data = allProducts)
     );
+    this.subscription = this.logInService.columns$.subscribe(
+      (columnOrderService) =>
+        (this.displayedColumns = columnOrderService.map(
+          (column) => column.columnName
+        ))
+    );
   }
 
   ngOnDestroy(): void {

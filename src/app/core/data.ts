@@ -1,4 +1,4 @@
-import { ProductInterface, UserInterface } from './interfaces';
+import { ColumnInterface, ProductInterface, UserInterface } from './interfaces';
 
 export const PRODUCTO: ProductInterface[] = [
   {
@@ -207,4 +207,12 @@ export const USER: UserInterface[] = [
   { userName: 'a', userPassword: 'a' },
   { userName: 'root1', userPassword: 'root1' },
   { userName: 'root2', userPassword: 'root2' },
+];
+
+export const COLUMN: ColumnInterface[] = [
+  { columnName: 'nombre' },
+  { columnName: 'precio' },
+  { columnName: 'formato' },
+  { columnName: 'marca' },
+  { columnName: 'accion' },
 ];

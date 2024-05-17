@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ProductInterface } from '../core/interfaces';
-import { PRODUCTO } from '../core/data';
+import { ColumnInterface, ProductInterface } from '../core/interfaces';
+import { COLUMN, PRODUCTO } from '../core/data';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +12,9 @@ export class LogInService {
 
   private products = new BehaviorSubject<ProductInterface[]>(PRODUCTO);
   products$ = this.products.asObservable();
+
+  private columns = new BehaviorSubject<ColumnInterface[]>(COLUMN);
+  columns$ = this.columns.asObservable();
 
   require: boolean = false;
 
@@ -49,5 +52,9 @@ export class LogInService {
         }
       })
     );
+  }
+
+  columnOrder(order: ColumnInterface[]): void {
+    this.columns.next(order);
   }
 }

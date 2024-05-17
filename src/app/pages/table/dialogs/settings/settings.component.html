@@ -23,7 +23,12 @@
     >
       Cancelar
     </button>
-    <button mat-flat-button mat-dialog-close class="dialog__button--main">
+    <button
+      mat-flat-button
+      mat-dialog-close
+      class="dialog__button--main"
+      (click)="saveOrder()"
+    >
       Guardar
     </button>
   </mat-dialog-actions>
